@@ -11,6 +11,9 @@ dist-ssr
 .DS_Store
 Thumbs.db
 
+# Source docs (not for the public repo)
+proj descriptions/
+
 # Claude Code local settings
 .claude/settings.local.json
 

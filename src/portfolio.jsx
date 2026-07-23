@@ -11,6 +11,7 @@ import {
   Wrench,
   Waves,
   Gamepad2,
+  Bot,
   GitBranch,
   MapPin,
   Languages,
@@ -135,10 +136,48 @@ const ONGOING_PROJECTS = [
   },
 ];
 
-// Wrapped-up builds. Note: the LLM-driven SRA tool and the Hybrid Humanoid
-// Robot stair mechanism are intentionally left out here since they're already
-// covered in the Experience timeline above.
+// Wrapped-up builds. Note: the LLM-driven SRA tool is intentionally left out
+// here since it's already covered in the Experience timeline above.
 const COMPLETED_PROJECTS = [
+  {
+    id: "hybrid-humanoid-robot",
+    icon: Bot,
+    title: "Hybrid Humanoid Robot for Shipboard Stair Navigation",
+    org: "VICTOR Lab · UVA",
+    period: "Aug 2024 — Jan 2025",
+    description:
+      "Naval Research–sponsored humanoid robot designed to autonomously navigate shipboard stairways. Collaborated with a multidisciplinary team of master's students and postdocs, and designed a biologically-inspired hand-to-wheel mechanism using pneumatic actuation to improve stair-climbing performance.",
+    stack: ["Soft Robotics", "Pneumatics", "Mechanism Design", "SolidWorks"],
+    category: "Robotics",
+    media: {
+      images: [
+        {
+          src: "/hybrid-humanoid-robot/v1-first-iteration.png",
+          alt: "First-iteration SolidWorks cross-section of the hand-to-wheel mechanism",
+        },
+        {
+          src: "/hybrid-humanoid-robot/v2-exploded-view.png",
+          alt: "Exploded view of the mid-semester design, reliant on hinges and electromagnets",
+        },
+        {
+          src: "/hybrid-humanoid-robot/v3-soft-finger.png",
+          alt: "Final pneumatically actuated soft finger design",
+        },
+        {
+          src: "/hybrid-humanoid-robot/physical-prototype.jpg",
+          alt: "3D-printed soft finger prototype, about 50% complete",
+        },
+      ],
+      body: [
+        "During my second year of college, I got involved with the VICTOR Lab at UVA to learn what the mechanical design side of robotics looked like. Over the semester, I developed a few biologically-inspired hand-to-wheel mechanisms with a focus on pneumatically actuated fingers.",
+        "I learned what it was like to work in a truly fast-paced environment. Every day I'd go in, sit next to my postdoc, design for hours in SolidWorks, present my current iteration, and pivot based on his feedback. There was always something to tweak and improve, which only increased my interest in the field.",
+        "I had a couple of noteworthy designs throughout the semester. My first iteration was truly something — I was new to SolidWorks and design, and it showed.",
+        "By the middle of the semester, while studying for my CSWA, I was drastically more confident in my modeling abilities. But I'd overengineered the mechanism severely, relying on mechanical hinges, electromagnets, and perfect tolerances to function.",
+        "In my final design, I went back to basics. On crunch time, I sketched up a new CAD quickly and began iterating on a pneumatically actuated finger design — who would've thought I'd spend my last few weeks on the project 3D printing and building soft fingers? Certainly not me, but that's what I did.",
+        "By the time the semester was over, I'd completed around 50% of the physical prototype before we ran into material delays. This project is a large part of why I'm so passionate about research and robotics today.",
+      ],
+    },
+  },
   {
     id: "spin2-game",
     icon: Gamepad2,
@@ -186,52 +225,50 @@ const COMPLETED_PROJECTS = [
 ];
 
 const SKILLS = {
-  "Languages & Tools": [
-    "Python",
-    "MATLAB",
-    "Java",
-    "Claude API",
-    "Git",
-    "OOP",
-    "Qt",
-    "Tkinter",
-    "R",
-    "Arduino",
-    "LabVIEW",
+  Languages: ["Python", "MATLAB", "Java", "R", "HTML/CSS"],
+  "Frameworks & Tools": [
     "React",
     "Tailwind",
-    "HTML/CSS",
+    "Qt",
+    "Tkinter",
+    "Git",
+    "Claude API",
+  ],
+  "Engineering Software": [
+    "SolidWorks",
+    "Fusion 360",
+    "LabVIEW",
+    "Primavera P6",
   ],
   Hardware: [
     "Arduino",
-    "ESP32",
+    "Microcontrollers",
     "Spin2 / Propeller 2",
     "NI DAQ",
-    "Solenoid & Flow Control",
+    "Solenoid Control",
   ],
   "Engineering Concepts": [
     "Autonomous Control Systems",
     "Control Barrier Functions",
     "Soft Robotics",
-    "Monte Carlo Simulation",
-    "Schedule Risk Analysis",
-    "Transient Heat Transfer",
+    "Kinematics & Dynamics",
+    "Multibody Mechanics and Design",
   ],
 };
 
 const BEYOND_THE_LAB = [
   {
     icon: Footprints,
-    label: "Currently training for the Richmond Marathon",
+    label: "Currently training for the Richmond Marathon.",
   },
   {
     icon: Languages,
     label:
-      "Avid language learner (ACTFL Advanced Low in Spanish), currently looking to learn Italian",
+      "Avid language learner (ACTFL Advanced Low in Spanish), currently looking to learn Italian.",
   },
   {
     icon: BookOpen,
-    label: "Reading: Kafka on the Shore by Haruki Murakami",
+    label: "Reading: Kafka on the Shore by Haruki Murakami.",
   },
   {
     icon: Plane,
