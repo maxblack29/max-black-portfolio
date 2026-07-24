@@ -180,13 +180,31 @@ const COMPLETED_PROJECTS = [
   {
     id: "spin2-game",
     icon: Gamepad2,
-    title: "Multi-Core Embedded Game Using Microcontroller Programming",
-    org: "Personal Project",
+    title: "Field Rush",
+    org: "Mechatronics",
     period: "May 2026",
     description:
       "Built an interactive game from scratch on the Parallax Propeller 2, implementing an I2C protocol to interface an external game controller with the microcontroller. Leveraged the Propeller 2's multi-core architecture to run game logic, user input, and rendering as fully isolated parallel processes across separate cogs — achieving deterministic timing and zero-latency performance without an OS or scheduler to lean on.",
     stack: ["Spin2", "Propeller 2", "I2C", "Parallel Processing", "Embedded Systems"],
     category: "Embedded",
+    media: {
+      video: "/field-rush/gameplay.mp4",
+      content: [
+        "In the spring of my third year, I took a course called Mechatronics. Essentially, this was electronics 101 for mechanical engineers, a crash course to get us mechE's familiar with what mechatronic systems look like. Our final project, which ultimately took around a month, was creating a video game meant to run within the dialog box of the Propeller 2 using Spin2, the chip's native language.",
+        "By using I2C to connect and communicate to an old wii remote, my partner and I created a mashup of Space Invaders and Galaga, with a twist. The programming of the game was 10x more tedious than coding with a true high level language. The spin2 architecture forced me to learn core management, when to start a new cog, how I could create multiple timers and actions, and (worst of all) bit math.",
+        {
+          src: "/field-rush/field-rush-gameplay.jpg",
+          alt: "Gameplay screenshot showing the Virginia end zone with an FSU logo target",
+        },
+        "The game was based off of the field rush during the Virginia vs. Florida State game in the fall of 2025 with, undebatably, the best field rush the ACC has ever seen. If you \"upset\" the Florida bench by shooting the FSU logo 5 times, a field rush initiates.",
+        {
+          src: "/field-rush/field-rush-fieldstorm.jpg",
+          alt: "Pixel-art crowd rushing the field",
+        },
+        "Given the time, we might've made this look a bit better..",
+        "The game itself, although incredibly frustrating at times, truly taught me the importance of organized and thoughtful code. Especially when you began incorporating positional math and counting pixels on the screen, some of those Spin2 lines were ridiculously long. However, this project was incredibly rewarding. The game was coded by my partner and I, not AI, and it felt good to be creative while truly testing ourselves. An example of how the game movement worked is attached below.",
+      ],
+    },
   },
   {
     id: "thermal-bottle",
@@ -692,7 +710,7 @@ function ProjectsSection() {
    To publish real content for a project, add a `media` object to its entry
    in ONGOING_PROJECTS / COMPLETED_PROJECTS:
      media: {
-       video: "https://www.youtube.com/embed/VIDEO_ID",
+       video: "https://www.youtube.com/embed/VIDEO_ID", // or a local file, e.g. "/project/clip.mp4"
        content: [
          "A paragraph of body text.",
          { src: "/path/to/shot.png", alt: "..." },
@@ -701,8 +719,10 @@ function ProjectsSection() {
      }
    `content` renders top-to-bottom in the order given, so mix strings
    (paragraphs) and { src, alt } objects (images) freely to interleave them.
-   Until `video` or `content` is set, this page shows the "Updates coming
-   soon" placeholder.
+   `video` always renders last, below all of `content`. A URL starting with
+   "http" embeds as an iframe (YouTube/Vimeo); anything else is treated as a
+   local video file and rendered with a native <video> tag. Until `video` or
+   `content` is set, this page shows the "Updates coming soon" placeholder.
 ============================================================================ */
 
 function ProjectMedia({ project }) {
@@ -723,18 +743,6 @@ function ProjectMedia({ project }) {
 
   return (
     <div className="mt-16 space-y-6 max-w-2xl">
-      {video && (
-        <div className="aspect-video w-full border border-[var(--line)] overflow-hidden bg-[var(--paper-dim)]">
-          <iframe
-            src={video}
-            title={`${project.title} video`}
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      )}
-
       {content.map((block, i) =>
         typeof block === "string" ? (
           <p key={i} className="font-body text-[var(--muted)] leading-relaxed">
@@ -749,6 +757,26 @@ function ProjectMedia({ project }) {
           />
         )
       )}
+
+      {video &&
+        (video.startsWith("http") ? (
+          <div className="aspect-video w-full border border-[var(--line)] overflow-hidden bg-[var(--paper-dim)]">
+            <iframe
+              src={video}
+              title={`${project.title} video`}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <video
+            src={video}
+            controls
+            playsInline
+            className="w-full h-auto border border-[var(--line)]"
+          />
+        ))}
     </div>
   );
 }
