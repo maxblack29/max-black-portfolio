@@ -150,31 +150,30 @@ const COMPLETED_PROJECTS = [
     stack: ["Soft Robotics", "Pneumatics", "Mechanism Design", "SolidWorks"],
     category: "Robotics",
     media: {
-      images: [
+      content: [
+        "During my second year of college, I got involved with the Victor Lab at UVA to learn what the mechanical design side of robotics looked like. Over the semester, I developed a few biologically inspired hand-to-wheel mechanisms with a focus around pneumatically actuated fingers.",
+        "I learned what it was like to work in a truly fast paced environment. Everyday I'd go in, sit next to my postdoc, design for hours in SolidWorks, present my current inspiration, and pivot based on his feedback. There was always something to tweak and improve, which increased my interest in the field.",
+        "I had a couple noteworthy designs throughout the semester. My first iteration was truly something. I was new to solidworks and design and it was clear...",
         {
           src: "/hybrid-humanoid-robot/v1-first-iteration.png",
           alt: "First-iteration SolidWorks cross-section of the hand-to-wheel mechanism",
         },
+        "By the middle of the semester, I was preparing to take my CSWA and was drastically more confident in my modeling abilities.",
         {
           src: "/hybrid-humanoid-robot/v2-exploded-view.png",
           alt: "Exploded view of the mid-semester design, reliant on hinges and electromagnets",
         },
+        "However, I'd overengineered the mechanism severely. I was completely reliant on mechanical hinges, electromagnets, and perfect tolerances. In my final design, I went back to the basics. Since I was on crunch time, I sketched up a cad quickly and began iterating through my pneumatically actuated finger design.",
         {
           src: "/hybrid-humanoid-robot/v3-soft-finger.png",
           alt: "Final pneumatically actuated soft finger design",
         },
+        "Who would've thought that I'd spend my final few weeks in the US 3d printing and creating soft fingers? Certainly not me, but that's what I did.",
         {
           src: "/hybrid-humanoid-robot/physical-prototype.jpg",
           alt: "3D-printed soft finger prototype, about 50% complete",
         },
-      ],
-      body: [
-        "During my second year of college, I got involved with the VICTOR Lab at UVA to learn what the mechanical design side of robotics looked like. Over the semester, I developed a few biologically-inspired hand-to-wheel mechanisms with a focus on pneumatically actuated fingers.",
-        "I learned what it was like to work in a truly fast-paced environment. Every day I'd go in, sit next to my postdoc, design for hours in SolidWorks, present my current iteration, and pivot based on his feedback. There was always something to tweak and improve, which only increased my interest in the field.",
-        "I had a couple of noteworthy designs throughout the semester. My first iteration was truly something — I was new to SolidWorks and design, and it showed.",
-        "By the middle of the semester, while studying for my CSWA, I was drastically more confident in my modeling abilities. But I'd overengineered the mechanism severely, relying on mechanical hinges, electromagnets, and perfect tolerances to function.",
-        "In my final design, I went back to basics. On crunch time, I sketched up a new CAD quickly and began iterating on a pneumatically actuated finger design — who would've thought I'd spend my last few weeks on the project 3D printing and building soft fingers? Certainly not me, but that's what I did.",
-        "By the time the semester was over, I'd completed around 50% of the physical prototype before we ran into material delays. This project is a large part of why I'm so passionate about research and robotics today.",
+        "By the time the semester was over, I had completed around 50% of the physical prototype before we ran into material delays. This project is a large part of why I'm so passionate about research and robotics today.",
       ],
     },
   },
@@ -677,20 +676,24 @@ function ProjectsSection() {
    To publish real content for a project, add a `media` object to its entry
    in ONGOING_PROJECTS / COMPLETED_PROJECTS:
      media: {
-       images: ["/path/to/shot.png", { src: "/path/to/shot2.png", alt: "..." }],
        video: "https://www.youtube.com/embed/VIDEO_ID",
-       body: ["First paragraph.", "Second paragraph."],
+       content: [
+         "A paragraph of body text.",
+         { src: "/path/to/shot.png", alt: "..." },
+         "Another paragraph — renders after the image above.",
+       ],
      }
-   Any combination of images/video/body may be set. Until one is set, this
-   page shows the "Updates coming soon" placeholder.
+   `content` renders top-to-bottom in the order given, so mix strings
+   (paragraphs) and { src, alt } objects (images) freely to interleave them.
+   Until `video` or `content` is set, this page shows the "Updates coming
+   soon" placeholder.
 ============================================================================ */
 
 function ProjectMedia({ project }) {
   const media = project.media;
-  const images = media?.images ?? [];
   const video = media?.video;
-  const body = media?.body ?? [];
-  const hasContent = images.length > 0 || Boolean(video) || body.length > 0;
+  const content = media?.content ?? [];
+  const hasContent = Boolean(video) || content.length > 0;
 
   if (!hasContent) {
     return (
@@ -703,7 +706,7 @@ function ProjectMedia({ project }) {
   }
 
   return (
-    <div className="mt-16 space-y-10">
+    <div className="mt-16 space-y-6 max-w-2xl">
       {video && (
         <div className="aspect-video w-full border border-[var(--line)] overflow-hidden bg-[var(--paper-dim)]">
           <iframe
@@ -716,37 +719,19 @@ function ProjectMedia({ project }) {
         </div>
       )}
 
-      {images.length > 0 && (
-        <div className="grid sm:grid-cols-2 gap-4">
-          {images.map((img, i) => {
-            const src = typeof img === "string" ? img : img.src;
-            const alt =
-              typeof img === "string"
-                ? `${project.title} — image ${i + 1}`
-                : img.alt;
-            return (
-              <img
-                key={src}
-                src={src}
-                alt={alt}
-                className="w-full h-auto border border-[var(--line)] object-cover"
-              />
-            );
-          })}
-        </div>
-      )}
-
-      {body.length > 0 && (
-        <div className="space-y-4 max-w-2xl">
-          {body.map((paragraph, i) => (
-            <p
-              key={i}
-              className="font-body text-[var(--muted)] leading-relaxed"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      {content.map((block, i) =>
+        typeof block === "string" ? (
+          <p key={i} className="font-body text-[var(--muted)] leading-relaxed">
+            {block}
+          </p>
+        ) : (
+          <img
+            key={i}
+            src={block.src}
+            alt={block.alt}
+            className="w-full h-auto border border-[var(--line)] object-cover"
+          />
+        )
       )}
     </div>
   );
