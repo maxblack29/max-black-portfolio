@@ -31,7 +31,7 @@ const PROFILE = {
   name: "Max Black",
   title: "Robotics, Embedded Systems, and Autonomous Control",
   location: "Charlottesville, VA",
-  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a new one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch a movies!",
+  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch a movies!",
   status: "BUILDING // UVA MECH-E + CS, '27",
   email: "maxblack1222@gmail.com",
   linkedin: "https://www.linkedin.com/in/maxblack29",
@@ -209,6 +209,22 @@ const COMPLETED_PROJECTS = [
       "A Python/Qt GUI that automates control of a hypersonic detonation experiment, integrating solenoid valves, an NI DAQ system, and Alicat mass-flow controllers to cut manual intervention by 75%.",
     stack: ["Python", "Qt", "NI DAQ", "Alicat"],
     category: "Software",
+    media: {
+      content: [
+        "Since my first year, I had been curious about software engineering and computer science. I liked the problem solving aspect, it felt like a puzzle. Engineering is a creative outlet, and when I think of the projects I want to create, most use a computer as its medium.",
+        "The summer of my 2nd year, I was involved in Dr. Chloe Dedic's Reacting Flow lab. My main goal that summer was to automate a detonation experiment. There was a control system consisting of mass flow controllers, which allowed for different fuel mixtures, solenoids, meant for directional control of the fuel, and an NI DAQ, the data acquisition system. I created a few GUI's using Qt and tkinter, the control code, and began working on automated data extraction and analysis.",
+        {
+          src: "/detonation-gui/gui-screenshot.png",
+          alt: "Qt control GUI showing MFC controllers, solenoid states, and test controls",
+        },
+        "By the end of the summer, I had cut the necessary research personnel down from five experimenters to one, and the one researcher didn't even need to be in the room. They only needed a computer with all the physical connections. These detonations were incredibly loud, and this manpower reduction was a huge increase in safety. Overall, the lab encouraged more exploration of embedded systems and controls. I enjoyed seeing the code that I wrote map to a physical movement, like opening a mass flow controller or sending power to a solenoid.",
+        "Not only did the lab continue to feed my interest in software, but my love for research grew stronger as well. How could you not be interested in creating a shockwave that propagates faster than the speed of sound?",
+        {
+          src: "/detonation-gui/detonation-photo.jpg",
+          alt: "Detonation experiment firing inside the test enclosure",
+        },
+      ],
+    },
   },
   {
     id: "cavsat",
