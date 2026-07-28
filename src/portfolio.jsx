@@ -31,7 +31,7 @@ const PROFILE = {
   name: "Max Black",
   title: "Robotics, Embedded Systems, and Autonomous Control",
   location: "Charlottesville, VA",
-  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch a movies!",
+  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch movies!",
   status: "BUILDING // UVA MECH-E + CS, '27",
   email: "maxblack1222@gmail.com",
   linkedin: "https://www.linkedin.com/in/maxblack29",
@@ -207,17 +207,6 @@ const COMPLETED_PROJECTS = [
     },
   },
   {
-    id: "thermal-bottle",
-    icon: Wrench,
-    title: "Transient Heat Transfer Optimization",
-    org: "UVA Engineering Design Competition",
-    period: "May 2026",
-    description:
-      "Designed and built a thermally insulating water bottle from the ground up for a university-wide transient heat-transfer design competition, modeling heat loss over time to drive material and geometry choices — placed 1st out of 25 competing teams.",
-    stack: ["Heat Transfer", "Mechanical Design", "Thermal Modeling", "Scripting"],
-    category: "Mechanical",
-  },
-  {
     id: "detonation-gui",
     icon: Cpu,
     title: "Hypersonic Detonation Facility Automation",
@@ -247,13 +236,39 @@ const COMPLETED_PROJECTS = [
   {
     id: "cavsat",
     icon: Rocket,
-    title: "CavSat Telemetry Visualization Suite",
+    title: "CavSat Data Visualization and Software Design",
     org: "UVA CavSat",
-    period: "Jan 2024 — May 2026",
+    period: "June 2025 - May 2026",
     description:
       "Python GUI frameworks to manage, visualize, and track simulated telemetry data for a 6U CubeSat designed to monitor ozone depletion in low Earth orbit.",
     stack: ["Python", "GUI Development", "Data Visualization"],
     category: "Aerospace / Software",
+    media: {
+      content: [
+        "CavSat, UVA's CubeSat team, is a design and engineering team with the goal of designing a CanSat payload that adheres to a strict set of requirements published by the American Astronautical Society's (AAS) CanSat Competition every year. Since the competition only allows for a ten person team, everyone needed to pull their weight. During the 2025/2026 academic year, my team developed UVA's first ever CanSat. While other teams recycled designs and ground stations from previous years, we were starting from absolute zero.",
+        "The competition deserves some background. During this particular year, the objective was to launch a payload, release an egg with protection designed by the team around it, deploy a glider and autonomously navigate this system to a destination only given during competition day, release the egg with its protective casing two meters above the ground, and then, ideally, the egg wouldn't break. The competition was the hardest it had ever been.",
+        {
+          src: "/cavsat/mission-profile-diagram.png",
+          alt: "Mission profile diagram showing container separation, parachute and paraglider deployment, and egg release",
+        },
+        "While the team had to put in extra hours learning the rules of the competition and building from scratch, this was one of the most rewarding experiences I've had. Full scale engineering design is truly spectacular and absolutely fascinating to be a part of. While I was busy figuring out how the club was going to pay for everything and developing the ground station, three of my teammates were designing the payload in which the egg container would sit. One of them was figuring out how we could use servos to autonomously glide the entire egg payload towards the target. Another was figuring out the flight control logic that would go behind that. It was incredibly fast paced, and at times quite stressful.",
+        "Reading the long list of requirements and ensuring that they were implemented into the design and my GUI was significantly more difficult than I initially thought it would be. I used matplotlib for live graphing, python's built in csv package to read and store the telemetry, and the Qt framework for the UI. Pictured below is the GUI in action with the handheld radio antenna extended to capture data being transmitted from an XBee-Pro XSC within the CanSat.",
+        {
+          src: "/cavsat/gui-annotated.png",
+          alt: "UVA CavSat Ground Station GUI, annotated to show real-time plots, command insert, and simulation controls",
+        },
+        {
+          src: "/cavsat/ground-station.jpg",
+          alt: "Ground station laptop and handheld radio antenna set up in the field",
+        },
+        "In the spring, when the brunt of our deliverables were due, we had to move even quicker. We ended up scoring a 97% on both the preliminary design review (PDR) and critical design review (CDR), placing us within the top 20 teams worldwide. It was refreshing and exciting to see our work pay off, especially competing against teams that had done this competition before.",
+        "The CanSat was ready about a week before finals. Unfortunately, we were severely over mass budget (the prototype weighed too much) and we simply didn't have time to fix it before competition. Although we couldn't attend the final event, we ended up launching the CanSat over the summer with a rocket that our mentor lent us. The CanSat launched and the egg successfully deployed, the design sent data, and my GUI read, saved, and displayed the data and live plots.",
+        {
+          src: "/cavsat/rocket-launch.jpg",
+          alt: "The CanSat rocket on its launch stand in a field",
+        },
+      ],
+    },
   },
 ];
 
