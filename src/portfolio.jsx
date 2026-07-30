@@ -126,13 +126,25 @@ const ONGOING_PROJECTS = [
   {
     id: "vfcbf",
     icon: Waves,
-    title: "Vector-Field Control Barrier Functions",
+    title: "Vector Field Control Barrier Functions",
     org: "CRAL Lab · UVA",
     period: "Feb 2026 — Present",
     description:
       "Comparing traditional distance-based CBFs against Vector-Field CBFs for high-speed collision avoidance, with kinematic constraints (deceleration limits, velocity bounds, effective inertia) to guarantee forward invariance.",
     stack: ["Python", "Kinematics", "Linear Algebra", "Controls"],
     category: "Robotics",
+    media: {
+      content: [
+        "During my third year of college, I was eager to continue researching, however, I wanted to find a lab that would satiate my growing interest in software and robotics. By the spring semester of 2026, I'd reflected on my past 2.5 years of college and realized that everything that I'd done in my extracurriculars revolved around front end design and humanoid robots. I knew that I wanted to get my hands dirty with some true robotics and controls research while continuing to grow my skills within software development.",
+        "CRAL has done just that. During the semester, I spent time adding to the current code base of the Vector Control Barrier Function (VFCBF for short) and running comparisons against Aaron Ames's Control Barrier Function (CBF). The lab environment is fast. I've had to read a ton to familiarize myself with the field, which again, has strengthened my interest in research. It's especially fun to see publications that are so recent!",
+        {
+          src: "/vfcbf/vfcbf-vs-cbf.gif",
+          alt: "Simulation comparing CBF and VFCBF agents navigating around an obstacle toward a goal",
+        },
+        "I've spent a majority of my time applying various constraints to the VFCBF to more closely simulate how this program could run on an autonomous vehicle. It's been fascinating to see how closely my mechanical engineering and physics background can intersect with software. I implemented a braking constraint, steering constraint, agility constraint (a combination of both these two), and played around with adding constants to more closely simulate the inertia of a car. I derived them all from my knowledge of kinematics and learned linear algebra along the way.",
+        "I'm excited to keep researching this coming semester and see what's in store.",
+      ],
+    },
   },
 ];
 
