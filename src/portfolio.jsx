@@ -32,7 +32,7 @@ const PROFILE = {
   title: "Robotics, Embedded Systems, and Autonomous Control",
   location: "Charlottesville, VA",
   headshot: "/headshot.jpg",
-  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch movies!",
+  bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch movies!",
   status: "BUILDING // UVA MECH-E + CS, '27",
   email: "maxblack1222@gmail.com",
   linkedin: "https://www.linkedin.com/in/maxblack29",
