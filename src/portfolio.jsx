@@ -31,6 +31,7 @@ const PROFILE = {
   name: "Max Black",
   title: "Robotics, Embedded Systems, and Autonomous Control",
   location: "Charlottesville, VA",
+  headshot: "/headshot.jpg",
   bio: "I'm a mechanical engineering student with a background in physical AI, autonomous control, and embedded systems. I have a deep passion for learning and love to challenge myself, whether that's coding in a new language or learning to speak a one. When I'm not in school or on a project, I love to run, bike, climb, read, and watch movies!",
   status: "BUILDING // UVA MECH-E + CS, '27",
   email: "maxblack1222@gmail.com",
@@ -470,48 +471,60 @@ function Hero() {
       <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--accent)]/5 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-10 pt-20 pb-24 md:pt-28 md:pb-32">
-        <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--flag)] animate-pulse" />
-          {PROFILE.status}
-        </div>
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-start">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--flag)] animate-pulse" />
+              {PROFILE.status}
+            </div>
 
-        <h1 className="font-display font-semibold text-5xl sm:text-6xl md:text-7xl text-[var(--ink)] leading-[0.98] tracking-tight max-w-3xl">
-          {PROFILE.name}
-        </h1>
-        <p className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-[var(--accent-bright)] mt-5">
-          {PROFILE.title}
-        </p>
+            <h1 className="font-display font-semibold text-5xl sm:text-6xl md:text-7xl text-[var(--ink)] leading-[0.98] tracking-tight max-w-3xl">
+              {PROFILE.name}
+            </h1>
+            <p className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-[var(--accent-bright)] mt-5">
+              {PROFILE.title}
+            </p>
 
-        <p className="font-body text-[var(--muted)] text-lg leading-relaxed max-w-2xl mt-8">
-          {PROFILE.bio}
-        </p>
+            <p className="font-body text-[var(--muted)] text-lg leading-relaxed max-w-2xl mt-8">
+              {PROFILE.bio}
+            </p>
 
-        <div className="flex flex-wrap items-center gap-4 mt-10">
-          <a
-            href={`mailto:${PROFILE.email}`}
-            className="group flex items-center gap-2 font-mono text-xs uppercase tracking-widest bg-[var(--ink)] text-[var(--paper)] px-5 py-3 hover:bg-[var(--accent)] transition-colors duration-200"
-          >
-            <Mail size={15} />
-            {PROFILE.email}
-          </a>
-          <a
-            href={PROFILE.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest border border-[var(--line)] px-4 py-3 hover:border-[var(--ink)] transition-colors duration-200"
-          >
-            <Linkedin size={15} />
-            LinkedIn
-          </a>
-          <a
-            href={PROFILE.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest border border-[var(--line)] px-4 py-3 hover:border-[var(--ink)] transition-colors duration-200"
-          >
-            <Github size={15} />
-            GitHub
-          </a>
+            <div className="flex flex-wrap items-center gap-4 mt-10">
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="group flex items-center gap-2 font-mono text-xs uppercase tracking-widest bg-[var(--ink)] text-[var(--paper)] px-5 py-3 hover:bg-[var(--accent)] transition-colors duration-200"
+              >
+                <Mail size={15} />
+                {PROFILE.email}
+              </a>
+              <a
+                href={PROFILE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest border border-[var(--line)] px-4 py-3 hover:border-[var(--ink)] transition-colors duration-200"
+              >
+                <Linkedin size={15} />
+                LinkedIn
+              </a>
+              <a
+                href={PROFILE.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest border border-[var(--line)] px-4 py-3 hover:border-[var(--ink)] transition-colors duration-200"
+              >
+                <Github size={15} />
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div className="w-40 sm:w-48 md:w-56 lg:w-64 mx-auto md:mx-0 md:mt-2">
+            <img
+              src={PROFILE.headshot}
+              alt={PROFILE.name}
+              className="w-full h-auto object-cover border border-[var(--line)] shadow-[8px_8px_0_0_var(--accent)]"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -621,7 +634,8 @@ function TimelineItem({ item, isLast }) {
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+    <section id="experience" className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+      <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
       <SectionHeader
         eyebrow="Log"
         title="Experience"
@@ -711,8 +725,9 @@ function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
+      className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
     >
+      <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
       <SectionHeader
         eyebrow="Builds"
         title="Projects"
@@ -812,7 +827,8 @@ function ProjectDetailPage({ project }) {
   const Icon = project.icon;
 
   return (
-    <article className="max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+    <article className="relative max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
       <a
         href="#projects"
         onClick={() => {
@@ -871,8 +887,9 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
+      className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
     >
+      <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
       <SectionHeader eyebrow="Spec sheet" title="Skills & background" />
 
       <div className="grid md:grid-cols-3 gap-10 mb-16">
@@ -925,9 +942,10 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="border-t border-[var(--line)] bg-[var(--ink)] text-[var(--paper)]"
+      className="relative border-t border-[var(--line)] bg-[var(--ink)] text-[var(--paper)] overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+      <div className="absolute inset-0 blueprint-grid opacity-10 pointer-events-none" />
+      <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <div className="flex items-center gap-3 mb-3">
           <span className="w-6 h-px bg-[var(--accent-bright)]" />
           <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-bright)]">
