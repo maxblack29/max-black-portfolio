@@ -634,21 +634,23 @@ function TimelineItem({ item, isLast }) {
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+    <section id="experience" className="relative">
       <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
-      <SectionHeader
-        eyebrow="Log"
-        title="Experience"
-        blurb="Reverse-chronological, like a well-kept lab notebook. Tap any entry to expand."
-      />
-      <div>
-        {EXPERIENCE.map((item, i) => (
-          <TimelineItem
-            key={item.id}
-            item={item}
-            isLast={i === EXPERIENCE.length - 1}
-          />
-        ))}
+      <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <SectionHeader
+          eyebrow="Log"
+          title="Experience"
+          blurb="Reverse-chronological, like a well-kept lab notebook. Tap any entry to expand."
+        />
+        <div>
+          {EXPERIENCE.map((item, i) => (
+            <TimelineItem
+              key={item.id}
+              item={item}
+              isLast={i === EXPERIENCE.length - 1}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -723,26 +725,25 @@ function ProjectSubsection({ eyebrow, title, projects }) {
 
 function ProjectsSection() {
   return (
-    <section
-      id="projects"
-      className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
-    >
+    <section id="projects" className="relative">
       <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
-      <SectionHeader
-        eyebrow="Builds"
-        title="Projects"
-        blurb="A working set of the systems, tools, and mechanisms I've built across labs, internships, and weekends."
-      />
-      <ProjectSubsection
-        eyebrow="In progress"
-        title="Ongoing projects"
-        projects={ONGOING_PROJECTS}
-      />
-      <ProjectSubsection
-        eyebrow="Shipped"
-        title="Completed projects"
-        projects={COMPLETED_PROJECTS}
-      />
+      <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]">
+        <SectionHeader
+          eyebrow="Builds"
+          title="Projects"
+          blurb="A working set of the systems, tools, and mechanisms I've built across labs, internships, and weekends."
+        />
+        <ProjectSubsection
+          eyebrow="In progress"
+          title="Ongoing projects"
+          projects={ONGOING_PROJECTS}
+        />
+        <ProjectSubsection
+          eyebrow="Shipped"
+          title="Completed projects"
+          projects={COMPLETED_PROJECTS}
+        />
+      </div>
     </section>
   );
 }
@@ -827,54 +828,56 @@ function ProjectDetailPage({ project }) {
   const Icon = project.icon;
 
   return (
-    <article className="relative max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+    <article className="relative">
       <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
-      <a
-        href="#projects"
-        onClick={() => {
-          setTimeout(() => {
-            const el = document.querySelector("#projects");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-          }, 50);
-        }}
-        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent-bright)] transition-colors duration-200 mb-10"
-      >
-        <ArrowUpRight size={14} className="rotate-[225deg]" />
-        Back to projects
-      </a>
+      <div className="relative max-w-4xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <a
+          href="#projects"
+          onClick={() => {
+            setTimeout(() => {
+              const el = document.querySelector("#projects");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 50);
+          }}
+          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent-bright)] transition-colors duration-200 mb-10"
+        >
+          <ArrowUpRight size={14} className="rotate-[225deg]" />
+          Back to projects
+        </a>
 
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 flex items-center justify-center border border-[var(--accent)] text-[var(--accent)]">
-          <Icon size={18} />
-        </div>
-        <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
-          {project.category}
-        </span>
-      </div>
-
-      <h1 className="font-display font-semibold text-3xl md:text-5xl text-[var(--ink)] tracking-tight leading-tight">
-        {project.title}
-      </h1>
-      <p className="font-mono text-sm text-[var(--accent)] mt-3">
-        {project.org} · {project.period}
-      </p>
-
-      <p className="font-body text-[var(--muted)] text-lg leading-relaxed mt-8 max-w-2xl">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-[var(--line)]">
-        {project.stack.map((s) => (
-          <span
-            key={s}
-            className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] bg-[var(--paper-dim)] px-2 py-1"
-          >
-            {s}
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-10 h-10 flex items-center justify-center border border-[var(--accent)] text-[var(--accent)]">
+            <Icon size={18} />
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
+            {project.category}
           </span>
-        ))}
-      </div>
+        </div>
 
-      <ProjectMedia project={project} />
+        <h1 className="font-display font-semibold text-3xl md:text-5xl text-[var(--ink)] tracking-tight leading-tight">
+          {project.title}
+        </h1>
+        <p className="font-mono text-sm text-[var(--accent)] mt-3">
+          {project.org} · {project.period}
+        </p>
+
+        <p className="font-body text-[var(--muted)] text-lg leading-relaxed mt-8 max-w-2xl">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-[var(--line)]">
+          {project.stack.map((s) => (
+            <span
+              key={s}
+              className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] bg-[var(--paper-dim)] px-2 py-1"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
+        <ProjectMedia project={project} />
+      </div>
     </article>
   );
 }
@@ -885,49 +888,48 @@ function ProjectDetailPage({ project }) {
 
 function AboutSection() {
   return (
-    <section
-      id="about"
-      className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]"
-    >
+    <section id="about" className="relative">
       <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
-      <SectionHeader eyebrow="Spec sheet" title="Skills & background" />
+      <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-[var(--line)]">
+        <SectionHeader eyebrow="Spec sheet" title="Skills & background" />
 
-      <div className="grid md:grid-cols-3 gap-10 mb-16">
-        {Object.entries(SKILLS).map(([group, items]) => (
-          <div key={group}>
-            <h4 className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-4">
-              {group}
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {items.map((item) => (
-                <span
-                  key={item}
-                  className="font-body text-sm px-3 py-1.5 transition-colors duration-200 text-[var(--ink)] border border-[var(--line)] hover:border-[var(--accent)]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="border-t border-[var(--line)] pt-10">
-        <h4 className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-5">
-          Beyond the lab
-        </h4>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {BEYOND_THE_LAB.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div key={i} className="flex items-start gap-3">
-                <Icon size={18} className="text-[var(--accent)] shrink-0 mt-0.5" />
-                <p className="font-body text-sm text-[var(--muted)] leading-relaxed">
-                  {item.label}
-                </p>
+        <div className="grid md:grid-cols-3 gap-10 mb-16">
+          {Object.entries(SKILLS).map(([group, items]) => (
+            <div key={group}>
+              <h4 className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-4">
+                {group}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <span
+                    key={item}
+                    className="font-body text-sm px-3 py-1.5 transition-colors duration-200 text-[var(--ink)] border border-[var(--line)] hover:border-[var(--accent)]"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-            );
-          })}
+            </div>
+          ))}
+        </div>
+
+        <div className="border-t border-[var(--line)] pt-10">
+          <h4 className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] mb-5">
+            Beyond the lab
+          </h4>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {BEYOND_THE_LAB.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="flex items-start gap-3">
+                  <Icon size={18} className="text-[var(--accent)] shrink-0 mt-0.5" />
+                  <p className="font-body text-sm text-[var(--muted)] leading-relaxed">
+                    {item.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
