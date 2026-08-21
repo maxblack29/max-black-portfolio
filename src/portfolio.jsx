@@ -100,7 +100,7 @@ const EXPERIENCE = [
     dates: "Aug 2024 — Jan 2025",
     tag: "Robotics / Research",
     summary:
-      "Naval Research–sponsored Hybrid Humanoid Robot for stair navigation aboard Navy vessels.",
+      "Naval Research sponsored Hybrid Humanoid Robot for stair navigation aboard Navy vessels.",
     details: [
       "Collaborated with a multidisciplinary team of master's students and postdocs to design a humanoid robot capable of autonomously navigating shipboard stairways.",
       "Designed a biologically-inspired hand-to-wheel mechanism using pneumatic actuation to improve stair-climbing performance.",
@@ -159,7 +159,7 @@ const COMPLETED_PROJECTS = [
     org: "VICTOR Lab · UVA",
     period: "Aug 2024 — Jan 2025",
     description:
-      "Naval Research–sponsored humanoid robot designed to autonomously navigate shipboard stairways. Collaborated with a multidisciplinary team of master's students and postdocs, and designed a biologically-inspired hand-to-wheel mechanism using pneumatic actuation to improve stair-climbing performance.",
+      "Naval Research sponsored humanoid robot designed to autonomously navigate shipboard stairways. Collaborated with a multidisciplinary team of master's students and postdocs, and designed a biologically inspired hand-to-wheel mechanism using pneumatic actuation to improve stair-climbing performance.",
     stack: ["Soft Robotics", "Pneumatics", "Mechanism Design", "SolidWorks"],
     category: "Robotics",
     media: {
@@ -197,7 +197,7 @@ const COMPLETED_PROJECTS = [
     org: "Mechatronics",
     period: "May 2026",
     description:
-      "Built an interactive game from scratch on the Parallax Propeller 2, implementing an I2C protocol to interface an external game controller with the microcontroller. Leveraged the Propeller 2's multi-core architecture to run game logic, user input, and rendering as fully isolated parallel processes across separate cogs — achieving deterministic timing and zero-latency performance without an OS or scheduler to lean on.",
+      "Built an interactive game from scratch on the Parallax Propeller 2, implementing an I2C protocol to interface an external wii controller with the microcontroller. Leveraged the Propeller 2's multi-core architecture to run game logic, user input, and rendering as fully isolated parallel processes across separate cogs.",
     stack: ["Spin2", "Propeller 2", "I2C", "Parallel Processing", "Embedded Systems"],
     category: "Embedded",
     media: {
@@ -253,7 +253,7 @@ const COMPLETED_PROJECTS = [
     org: "UVA CavSat",
     period: "June 2025 - May 2026",
     description:
-      "Python GUI frameworks to manage, visualize, and track simulated telemetry data for a 6U CubeSat designed to monitor ozone depletion in low Earth orbit.",
+      "Python GUI frameworks to manage, visualize, and track simulated telemetry data for a CanSat.",
     stack: ["Python", "GUI Development", "Data Visualization"],
     category: "Aerospace / Software",
     media: {
@@ -640,7 +640,7 @@ function ExperienceSection() {
         <SectionHeader
           eyebrow="Log"
           title="Experience"
-          blurb="Reverse-chronological, like a well-kept lab notebook. Tap any entry to expand."
+          blurb="A timeline of my work, research, and lab experience."
         />
         <div>
           {EXPERIENCE.map((item, i) => (
